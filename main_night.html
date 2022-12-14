@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style type="text/css">
+      
+      body{background-color: #2B2929}
+      body,h1,h2,h3,p,div,ul,li,dl,dt,dd 
+        {margin: 0;padding: 0;}      
+        ul,li,dl,dt,dd {list-style: none}        
+        a{text-decoration:none;color: #d9d9d9}
+        address {font-style: normal}        
+        /* 공통 클래스 */        
+        .blind{position:absolute;clip:rect(0 0 0 0);width:1px;height:1px;margin:-1px;overflow:hidden}        
+        .screen_out{overflow:hidden;position:absolute;width:0;height:0;line-height:0;text-indent:-9999px}        
+        .hide{position:absolute;left:-9999px;top:-9999px}
+        hr{margin-top:5%;margin-bottom:5%;color:#d9d9d9}
+        h2{text-shadow:5px 5px 5px #000;font-weight:bold;margin-left:5%;font-size:10vw;color:#d9d9d9}
+        h3{display:none}
+        iframe{margin-top:5%;box-shadow:10px 10px 10px #000}
+            /* wrap */
+        .wrap{min-width:750px}
+          /* header */
+          header{width: 100%;}
+          #ham{display:none;}
+          #ham + label {position:relative;display:block;width:50px;height:40px;cursor:pointer;z-index:2}
+          #ham + label > span {position:absolute;display:block;width:100%;height:5px;background:#fff;border-radius:5px;transition:all 300ms}
+          #ham:checked + label > span:nth-child(1){top:50%;transform:translate(0, -50%);transform:rotate(45deg)}
+          #ham + label > span:nth-child(2){top:50%;transform:translate(0, -50%)}
+          #ham:checked + label > span:nth-child(2){opacity:0}
+          #ham + label > span:nth-child(3){bottom:0}
+          #ham:checked + label > span:nth-child(3){top:50%;transform:translate(0, -50%);transform:rotate(-45deg)}        
+          #side_menu{position:fixed;width:30%;height: 100%;background-color:#2B2929;left:-30%;transition:all 300ms;z-index:1;top:0px;padding: 100px 2px 20px 20px; box-sizing:border-box}
+          #ham:checked + label + #side_menu{left:0}
+          .moon{border:none;background-color:transparent;width:17vw;color:#fff}
+          .moon:hover{background-color:#000;color:#fff}
+          /* door */
+          .door{border:none;background-color:none;margin-top:5%;margin-left:50%;width:15vw}
+          h1{color:#fff;font-weight:bold;font-size:10vw;margin:auto;background-color:transparent;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;text-shadow:5px 5px 5px #000}
+          nav{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;margin:2% 5% 0 5%}
+          .side{width:5vw;margin-top:2%}
+          .search{display:none}
+          /* 화면 줄이면 search2 숨는 현상 수정해야함! */
+          .search2{border:none;background-color:transparent;margin-top:5px;width:15vw;color:#fff;}
+          /* main_image */
+          #top10{text-indent:-9999px;font-size:0px}
+          .main_image{text-align:center;margin:2% 5% 0 5%}
+          .main_image img{z-index:1;width:100%;border-radius:46px;box-shadow:10px 10px 10px  #000}
+          .top2{display:none}
+          .top3{display:none}
+          .top4{display:none}
+          .top5{display:none}
+          .top6{display:none}
+          .top7{display:none}
+          .top8{display:none}
+          .top9{display:none}
+          .top10{display:none}
+          .quickmenu{display:none}
+          /* theme */          
+          .theme2{border:5px solid white; width:400px;height:500px;text-align:center;border-radius: 20px;box-shadow:10px 10px 10px #000;margin-left:5%;margin-top:5%;background:#fff}
+          .theme2 img{padding-top:5%;border-radius:20px}
+          /* hotel */
+          .hotel img{margin-top:3%;margin-left:5%;margin-right:5%;border-radius: 20px;box-shadow:10px 10px 10px #000}
+          /* festival */
+          #festival{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;margin-left:5%}
+          #festival img{border-radius:20px;box-shadow:10px 10px 10px #000;margin-top:10%}
+          /* event */
+          #event{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;margin-left:5%}
+          #event img{border-radius: 50%;box-shadow:10px 10px 10px #000;margin-top:5%}
+          /* feel the rythem of the korea */
+          .feel{/* border:1px solid #000; */text-align:center}
+          /* sns */
+          #sns{border:1px solid #000;margin-left:5%;margin-right:5%;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;margin-top:2%}
+          #sns img{border-radius:100%;box-shadow:10px 10px 10px #000}
+          /* partners */
+          #partners{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;margin-top:10%;margin-left:5%;margin-right:5%}
+          #partners img{border-radius:20px}
+          #tour{margin-top:2%;margin-left:5%;}
+          /* policy */
+          .pol{margin-left:5%;margin-right:5%;margin-top:2%;background-color:#2B2929}
+          .policy{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;padding:1%}
+          .policy li{text-align:center}
+          .policy_text{color:white;font-weight:bold;}
+          .address{padding:1%;line-height:30px}
+          
+          /* tourapi */
+          #tourapi{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;margin-left:5%;margin-right:5%}
+          .koreatour{margin-left:5%;font-size:1.3em}
+          .footer_hr{margin-bottom:0%}
+          .tour_background{background-color:#F7F7F7}
+      
+    </style>
+</head>
+<body>
+<div class="wrap">
+        <!-- header -->
+        <header>
+            <nav>
+              <div class="side">
+                <input type="checkbox" id="ham">
+                  <label for="ham">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </label>              
+                <div id="side_menu">
+                  <ul>
+                    <li><a href="#">login</a></li>
+                    <li><a href="#">popular</a></li>
+                    <li><a href="#">area</a></li>                    
+                  </ul>
+                </div>
+              </div>
+
+              <a href="none">
+                <button class="door" type="button"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+                  <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+                  <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"/>
+                </svg></button>
+              </a>
+
+              <h1><a href="main_night.html">Paldogangsan.</a></h1>
+              <a href="main_day.html">
+                <button class="moon" type="button"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
+                  <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                </svg></button>
+              </a>
+              <form action="" method="">
+                <input class="search" type="search" name="q">
+                <button class="search2" type="button" onclick=""><svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg></button>                
+              </form>
+            </nav>
+        </header>
+        
+              <!-- content -->
+<main id="content" class="content">
+  <section class="main_image">
+        <h2 id="top10">밤 추천 여행 top10</h2>
+       <div>
+          <ul>
+            <li class="top1">
+              <a href="#">
+                <img src="images/tong.jpg" alt="">                
+                <!-- <span class="goseong2">눈 호강 여행,<br>그림같은 풍경 고성 뷰맛집으로!
+                <span class="goseong2">마음이 포근해지는 바다 풍경, 감탄사를 부르는 압도적인 산 풍경을 품은 강원도 고성 여행! -->
+              </a>
+            </li>
+            <li class="top2">
+              <a href="#">
+                <img src="images/jeju2.jpg" alt="">
+              </a>
+            </li>
+            <li class="top3">
+              <a href="#">
+                <img src="images/jeju2.jpg" alt="">
+              </a>
+            </li>
+            <li class="top4">
+              <a href="#">
+                <img src="images/jeju2.jpg" alt="">
+              </a>
+            </li>
+            <li class="top5">
+              <a href="#">
+                <img src="images/jeju2.jpg" alt="">
+              </a>
+            </li>
+            <li class="top6">
+              <a href="#">
+                <img src="images/jeju2.jpg" alt="">
+              </a>
+            </li>
+            <li class="top7">
+              <a href="#">
+                <img src="images/jeju2.jpg" alt="">
+              </a>
+            </li>
+            <li class="top8">
+              <a href="#">
+                <img src="images/jeju2.jpg" alt="">
+              </a>
+            </li>
+            <li class="top9">
+              <a href="#">
+                <img src="images/jeju2.jpg" alt="">
+              </a>
+            </li>
+            <li class="top10">
+              <a href="#">
+                <img src="images/jeju2.jpg" alt="">
+              </a>
+            </li>
+          </ul>
+       </div>
+  </section>
+       <div class="quickmenu">
+        <ul>
+          <li><a href="#">맨위로</a></li>
+        </ul>
+      </div>
+      
+      <hr>
+      <h2>
+        오늘의 숙소? 
+        <input type="text">
+      </h2>
+      <div class="hotel">
+        <a href="#">
+          <img src="images/hotel.jpg" alt="">
+        </a>
+      </div>
+       <hr>
+       <h2>THEME TRAVEL ▶</h2>
+          <div>
+            <div class="theme2">
+              <div>
+                  <a href="#">
+                    <img src="images/kijeong.png" alt="">
+                  </a>
+              </div>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>            
+          </div>
+        <hr>
+        <h2 class="theme">FESTIVAL 12 ▶</h2>
+          <div id="festival">            
+            <div class="fes">
+                <a href="#">
+                  <img src="images/u.jpg" alt="">
+                </a>
+            </div>            
+            <div class="fes2">
+              <a href="#">
+                <img src="images/haeundae.jpg" alt="">
+              </a>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>
+          </div>
+          <hr>
+          <h2>EVENT ▶</h2>
+          <div id="event">
+            <div class="eve">
+                <a href="#">
+                  <img src="images/eve.png" alt="">
+                </a>
+            </div>            
+            <div>
+              <a href="#">
+                <img src="images/eve2.png" alt="">
+              </a>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"></a>
+            </div>
+          </div>
+          <hr>
+          <div>
+            <h2>feel the rythem of the korea ▶</h2>
+            <div class="feel">
+              <iframe width="640" height="360" src="https://www.youtube.com/embed/gux_pyEIcUY" title="Feel the Rhythm of Korea with BTS – JEJU JAZZ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <hr>
+          <h2>SNS TOGETHER</h2>
+          <div id="sns">
+            <div class="apple">
+              <a href="">
+                <img src="images/blog2.jpg" alt="">
+              </a>
+            </div>
+            <div>
+              <a href="">
+                <img src="" alt="">
+              </a>
+            </div>
+            <div>
+              <a href="">
+                <img src="" alt="">
+              </a>
+            </div>
+            <div>
+              <a href="">
+                <img src="" alt="">
+              </a>
+            </div>
+            <div>
+              <a href="">
+                <img src="" alt="">
+              </a>
+            </div>
+            <div>
+              <a href="">
+                <img src="" alt="">
+              </a>
+            </div>            
+          </div>
+</main>
+          <footer>
+            <div id="partners">
+              <div><a href="#"><img src="images/partners.jpg" alt=""></a></div>
+              <div><a href="#"><img src="images/info.jpg" alt=""></a></div>
+            </div>
+            <div id="tour">
+              <div><a href="#"><img src="images/tour.jpg" alt=""></a></div>
+            </div>
+            <h3>정책 및 약관</h3>
+            <div>
+              <ul class="pol">
+                <li class="pol2">
+                  <ul class="policy">
+                    <li><a href="#"><span class="policy_text">개인정보처리방침</span></a></li>
+                    <li><span class="policy_text">|</span></li>
+                    <li><a href="#"><span class="policy_text">이용약관</span></a></li>
+                    <li><span class="policy_text">|</span></li>
+                    <li><a href="#"><span class="policy_text">위치기반서비스 이용약관</span></a></li>
+                    <li><span class="policy_text">|</span></li>
+                    <li><a href="#"><span class="policy_text">저작권정책</span></a></li>
+                  </ul>
+                  <ul class="policy">
+                    <li><a href="#"><span class="policy_text">고객서비스헌장</span></a></li>
+                    <li><span class="policy_text">|</span></li>
+                    <li><a href="#"><span class="policy_text">전자우편무단수집거부</span></a></li>
+                    <li><span class="policy_text">|</span></li>
+                    <li><a href="#"><span class="policy_text">Q&A</span></a></li>
+                    <li><span class="policy_text">|</span></li>
+                    <li><a href="#"><span class="policy_text">찾아오시는 길</span></a></li>
+                  </ul>
+                </li>
+                <ul class="address">
+                  <li><span class="policy_text">우)16464 강원도 원주시 세계로 10 TEL : 033-738-3000</span></li>
+                  <li><span class="policy_text">사업자등록번호 : 202-81-50707</span></li>
+                  <li><span class="policy_text">통신판매업신고 : 제2009-서울중구-1234호</span></li>
+                </ul>
+              </ul>
+            </div>
+            <div>
+              
+            </div>
+            <hr class="footer_hr">
+            <div class="tour_background">
+              <div id="tourapi">
+                <div><a href="#"><img src="images/tourapiwa.png" alt=""></a></div>
+                <!-- <div><a href="#"><img src="images/wa.png" alt=""></a></div> -->
+                <div><a href="#"><img src="images/mun.png" alt=""></a></div>              
+              </div>
+              <div class="koreatour">
+                ⓒ한국관광공사
+              </div>
+            </div>
+          </footer>
+</div>
+</body>
+</html>

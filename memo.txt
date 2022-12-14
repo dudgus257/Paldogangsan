@@ -1,0 +1,13 @@
+{
+      id :    a,
+    (key)  (value)
+    name : bb
+}
+{
+    id : c,
+    name : dd
+}
+
+manifest.json => 데이터베이스
+service_worker.js => 오프라인 상태에서도 가능하게
+
